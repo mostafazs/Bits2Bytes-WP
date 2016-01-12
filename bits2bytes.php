@@ -3,12 +3,12 @@
 Plugin Name: Bits2Bytes
 Plugin URI: http://wordpress.org/extend/plugins/bits2bytes
 Description: Bits2Bytes is a wordpress simple/yet powerful widget, that allow users convert <a target='_blank' href='https://en.wikipedia.org/wiki/Units_of_information'>computer data units</a> to each other.
-Version: 1.0
+Version: 1.0.1
 Author: MostafaS
 Author URI: https://profiles.wordpress.org/mostafas
 */
 
-/*  Copyright 2015  Mostafa
+/*  Copyright 2016  Mostafa
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -98,44 +98,44 @@ class b2b_widget extends WP_Widget {
 		wp_enqueue_script( 'ajax_request', $script_ajax);
 		wp_enqueue_script( 'serialization', $script_serialization);
 		//Start main widget elements
-	echo "<div id='main_box' class='container'>";
-	echo "<div class='row'>";
-	//echo "<div id='title' class='col-md-12'>Bits2Bytes</div>";
-	echo "</div>";
-	echo "<div class='row'>";
-	echo "<div id='form_wrapper' class='col-md-12'>";
-	echo "<form name='frm1' id='main_form'>";
-	echo "<input type='text' name='amountField' id='amountField' class='field1' placeholder='". /* Translators: form input placeholder */__('Convert','bits2bytes') ."' title='".__('Enter numeric value','bits2bytes')."'/>";
-	echo "<select id='unitList' name='unit' class='field2'>";
-	echo "<option value='b'>".__('bits','bits2bytes')."</option>";
-	echo "<option value='B'>".__('bytes','bits2bytes')."</option>";
-	echo "<option value='kb'>".__('kilobits','bits2bytes')."</option>";
-	echo "<option value='kB'>".__('kilobytes','bits2bytes')."</option>";
-	echo "<option value='mb'>".__('megabits','bits2bytes')."</option>";
-	echo "<option value='mB'>".__('megabytes','bits2bytes')."</option>";
-	echo "<option value='gb'>".__('gigabits','bits2bytes')."</option>";
-	echo "<option value='gB'>".__('gigabytes','bits2bytes')."</option>";
-	echo "<option value='tb'>".__('terabits','bits2bytes')."</option>";
-	echo "<option value='tB'>".__('terabytes','bits2bytes')."</option>";
-	echo "<option value='pb'>".__('petabits','bits2bytes')."</option>";
-	echo "<option value='pB'>".__('petabytes','bits2bytes')."</option>";
-	echo "</select>";
-	echo "<!--<button id='in_submit'>></button>-->";
-	echo "<!-- <p id='in_submit' class='go'></p> -->";
-	echo "<!--<img src='./btn.png' class='btn' id='in_submit'/>-->";
-	echo "<input type='button' id='in_submit' title='".__('Convert','bits2bytes')."'/>";
-	echo "</form>";
-	echo "<div id='loader'><img src='".$loader_gif."' style='width: 190px; height: 20px;' title='".__('Please wait...','bits2bytes')."'/><small><b>".__('Please wait...','bits2bytes')."</b></small></div>";
-	echo "</div>";
-	echo "</div>";
-	echo "<div class='row'>";
-	echo "<div id='results' class='col-md-12'>";
+		echo "<div id='main_box' class='container'>";
+		echo "<div class='row'>";
+		//echo "<div id='title' class='col-md-12'>Bits2Bytes</div>";
+		echo "</div>";
+		echo "<div class='row'>";
+		echo "<div id='form_wrapper' class='col-md-12'>";
+		echo "<form name='frm1' id='main_form'>";
+		echo "<input type='text' name='amountField' id='amountField' class='field1' placeholder='". /* Translators: form input placeholder */__('Convert','bits2bytes') ."' title='".__('Enter numeric value','bits2bytes')."'/>";
+		echo "<select id='unitList' name='unit' class='field2'>";
+		echo "<option value='b'>".__('bits','bits2bytes')."</option>";
+		echo "<option value='B'>".__('bytes','bits2bytes')."</option>";
+		echo "<option value='kb'>".__('kilobits','bits2bytes')."</option>";
+		echo "<option value='kB'>".__('kilobytes','bits2bytes')."</option>";
+		echo "<option value='mb'>".__('megabits','bits2bytes')."</option>";
+		echo "<option value='mB'>".__('megabytes','bits2bytes')."</option>";
+		echo "<option value='gb'>".__('gigabits','bits2bytes')."</option>";
+		echo "<option value='gB'>".__('gigabytes','bits2bytes')."</option>";
+		echo "<option value='tb'>".__('terabits','bits2bytes')."</option>";
+		echo "<option value='tB'>".__('terabytes','bits2bytes')."</option>";
+		echo "<option value='pb'>".__('petabits','bits2bytes')."</option>";
+		echo "<option value='pB'>".__('petabytes','bits2bytes')."</option>";
+		echo "</select>";
+		echo "<!--<button id='in_submit'>></button>-->";
+		echo "<!-- <p id='in_submit' class='go'></p> -->";
+		echo "<!--<img src='./btn.png' class='btn' id='in_submit'/>-->";
+		echo "<input type='button' id='in_submit' title='".__('Convert','bits2bytes')."'/>";
+		echo "</form>";
+		echo "<div id='loader'><img src='".$loader_gif."' style='width: 190px; height: 20px;' title='".__('Please wait...','bits2bytes')."'/><small><b>".__('Please wait...','bits2bytes')."</b></small></div>";
+		echo "</div>";
+		echo "</div>";
+		echo "<div class='row'>";
+		echo "<div id='results' class='col-md-12'>";
 
-	echo "<table id='resultTable'><tr><td width='10%'>".__('bits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('bytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('kilobits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('kilobytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('megabits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('megabytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('gigabits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('gigabytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('terabits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('terabytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('petabits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('petabytes','bits2bytes').": </td><td>?</td></tr></table>";
-	//echo "<center><small>By <a href='http://wordpress.org/extend/plugins/bits2bytes/'>Bits2Bytes</a></small></center>";
-	echo "</div>";
-	echo "</div>";
-	echo "</div>";
+		echo "<table id='resultTable'><tr><td width='10%'>".__('bits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('bytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('kilobits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('kilobytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('megabits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('megabytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('gigabits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('gigabytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('terabits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('terabytes','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('petabits','bits2bytes').": </td><td>?</td></tr><tr><td width='10%'>".__('petabytes','bits2bytes').": </td><td>?</td></tr></table>";
+		//echo "<center><small>By <a href='http://wordpress.org/extend/plugins/bits2bytes/'>Bits2Bytes</a></small></center>";
+		echo "</div>";
+		echo "</div>";
+		echo "</div>";
 		//End main widget elements
 		
 		//Start Bits2Bytes.js File
@@ -272,14 +272,13 @@ var serialize_value = serialize(form);
 					}
 				}
 				XHR.ontimeout=function(){
-					alert("<?php _e('Timeout making request','bits2bytes'); ?>");
+					alert("<?php _e('Time-out making request','bits2bytes'); ?>");
 					//hide loader
 					document.getElementById("loader").style.display="none";
 				}
 	
 		
 		var RequestURL = "http://bit2bytes.herokuapp.com/bit2bytes.php";
-		//XHR.open("GET", RequestURL+"?amt="+amountField+"&unit="+unit, true); // For GET Request
 		XHR.open("POST", RequestURL, true);
 		XHR.setRequestHeader("content-type","application/json");//optional
 		XHR.setRequestHeader("Content-type","application/x-www-form-urlencoded");
